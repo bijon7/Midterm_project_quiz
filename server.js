@@ -21,6 +21,7 @@ app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
   "/styles",
@@ -36,12 +37,19 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+const quizzesRoutes = require("./routes/quizzes");
+const quizQuestions = require("./routes/quizQuestions");
+const quizQuestionOptions = require("./routes/quizQuestionOptions");
+const quizResponses = require("./routes/quizResponses");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/api/quizzes", quizzesRoutes(db));
+app.use("/api/quizQuestions", quizQuestions(db));
+app.use("/api/quizQuestionOptions", quizQuestionOptions(db));
+app.use("/api/quizResponses", quizResponses(db));
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
