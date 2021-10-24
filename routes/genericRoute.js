@@ -15,7 +15,7 @@ module.exports = (db, tableName) => {
   router.get("/", (req, res) => {
 
     let userId = req.session['user_id'] || 0;
-    if(userId < 1){
+    if (userId < 1) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -36,7 +36,7 @@ module.exports = (db, tableName) => {
   router.get("/:id", (req, res) => {
 
     let userId = req.session['user_id'] || 0;
-    if(userId < 1){
+    if (userId < 1) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -62,7 +62,7 @@ module.exports = (db, tableName) => {
   router.post("/", (req, res) => {
 
     let userId = req.session['user_id'] || 0;
-    if(userId < 1){
+    if (userId < 1) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -73,8 +73,7 @@ module.exports = (db, tableName) => {
       .then(data => {
         if (data) {
           res.status(201).json(data);
-        }
-        else {
+        } else {
           res.sendStatus(204);
         }
       })
@@ -89,7 +88,7 @@ module.exports = (db, tableName) => {
   router.patch("/", (req, res) => {
 
     let userId = req.session['user_id'] || 0;
-    if(userId < 1){
+    if (userId < 1) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -112,7 +111,7 @@ module.exports = (db, tableName) => {
   router.delete("/:id", (req, res) => {
 
     let userId = req.session['user_id'] || 0;
-    if(userId < 1){
+    if (userId < 1) {
       // User not logged in
       res.sendStatus(401);
       return;
