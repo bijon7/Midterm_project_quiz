@@ -1,5 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
+const cookieSession = require('cookie-session');
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -22,6 +23,11 @@ app.use(morgan("dev"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}))
 
 app.use(
   "/styles",

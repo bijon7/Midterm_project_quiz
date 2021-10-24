@@ -1,4 +1,4 @@
-const objecToDbMapper = require('../helpers/ObjecToDbMapper');
+const objecToDbMapper = require('../helpers/objecToDbMapper');
 
 module.exports.getEntities = async (db, tableName) => {
     const query = `SELECT * FROM ${tableName}`;
@@ -37,4 +37,10 @@ module.exports.deleteEntity = async (db, tableName, entityId) => {
     const query = `DELETE FROM ${tableName} WHERE id=${entityId || 0}`;
     const res = await db.query(query);
     return true;
+}
+
+module.exports.queryTable = async (db, tableName, whereClause) => {
+    const query = `SELECT * FROM ${tableName} WHERE ${whereClause}`;
+    const res = await db.query(query);
+    return res?.rows || [];
 }

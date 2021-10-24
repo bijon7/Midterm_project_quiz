@@ -13,6 +13,14 @@ const router = express.Router();
 module.exports = (db, tableName) => {
   // Get all Entities
   router.get("/", (req, res) => {
+
+    let userId = req.session['user_id'] || 0;
+    if(userId < 1){
+      // User not logged in
+      res.sendStatus(401);
+      return;
+    }
+
     getEntities(db, tableName)
       .then(data => {
         res.json(data);
@@ -26,6 +34,14 @@ module.exports = (db, tableName) => {
 
   // Get one Item by Id
   router.get("/:id", (req, res) => {
+
+    let userId = req.session['user_id'] || 0;
+    if(userId < 1){
+      // User not logged in
+      res.sendStatus(401);
+      return;
+    }
+
     const entityId = req.params['id'];
     getEntityById(db, tableName, entityId)
       .then(data => {
@@ -44,6 +60,14 @@ module.exports = (db, tableName) => {
 
   // Create a new entity
   router.post("/", (req, res) => {
+
+    let userId = req.session['user_id'] || 0;
+    if(userId < 1){
+      // User not logged in
+      res.sendStatus(401);
+      return;
+    }
+
     const entity = req.body;
     addEntity(db, tableName, entity)
       .then(data => {
@@ -63,6 +87,14 @@ module.exports = (db, tableName) => {
 
   // Edit an entity
   router.patch("/", (req, res) => {
+
+    let userId = req.session['user_id'] || 0;
+    if(userId < 1){
+      // User not logged in
+      res.sendStatus(401);
+      return;
+    }
+
     const entity = req.body;
 
     editEntity(db, tableName, entity)
@@ -78,6 +110,14 @@ module.exports = (db, tableName) => {
 
   // DELETE an entity
   router.delete("/:id", (req, res) => {
+
+    let userId = req.session['user_id'] || 0;
+    if(userId < 1){
+      // User not logged in
+      res.sendStatus(401);
+      return;
+    }
+    
     let entityId = req.params['id'];
 
     deleteEntity(db, tableName, entityId)
