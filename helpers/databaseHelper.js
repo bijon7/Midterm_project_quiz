@@ -4,6 +4,17 @@ module.exports.getEntities = async(db, tableName) => {
   const query = `SELECT * FROM ${tableName}`;
   const res = await db.query(query);
   return (res && res.rows) || [];
+
+  /*
+  * The above return is equal to the following logic
+  *
+  
+  if(res && res.rows){
+    return res.rows;
+  }else{
+    return [];
+  }
+  */
 };
 
 module.exports.getEntityById = async(db, tableName, entityId) => {
