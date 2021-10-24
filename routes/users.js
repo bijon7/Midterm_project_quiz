@@ -33,12 +33,14 @@ module.exports = (db) => {
     }
   });
 
-  router.post("/logout", async(req) => {
-    req.session['userId'] =  null;
+  router.post("/logout", async(req, res) => {
+    req.session['user_id'] =  null;
+    res.sendStatus(200);
   });
   
-  router.get("/logout", async(req) => {
-    req.session['userId'] =  null;
+  router.get("/logout", async(req, res) => {
+    req.session['user_id'] =  null;
+    res.sendStatus(200);
   });
 
   // Create a new user account

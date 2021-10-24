@@ -35,7 +35,7 @@ module.exports = (db) => {
       });
   });
 
-  // Get one Item by Id
+  // Get one Quiz by Id
   router.get("/:id", (req, res) => {
 
     let userId = req.session['user_id'] || 0;

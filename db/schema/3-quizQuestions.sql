@@ -1,6 +1,5 @@
 CREATE TABLE QuizQuestions(
     id SERIAL PRIMARY KEY NOT NULL,
     quiz_id INT REFERENCES Quizzes(id),
-    question VARCHAR (500) NOT NULL,
-    correct_option_id INT
+    question VARCHAR (500) NOT NULL
 );

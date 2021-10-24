@@ -1,5 +1,6 @@
 CREATE TABLE QuizQuestionOptions(
     id SERIAL PRIMARY KEY NOT NULL,
     quiz_question_id INT REFERENCES QuizQuestions(id),
-    "option" VARCHAR (500) NOT NULL
+    "option" VARCHAR (500) NOT NULL,
+    is_correct_option BOOLEAN DEFAULT false
 );

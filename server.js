@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cookieSession({
   name: 'session',
   keys: ['key1']
-}))
+}));
 
 app.use(
   "/styles",
