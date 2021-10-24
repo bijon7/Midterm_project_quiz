@@ -4,7 +4,7 @@ const router = express.Router();
 const {addEntity} = require('../helpers/databaseHelper');
 
 async function _getUser(db, email, password){
-    const query = `SELECT * FROM Users WHERE email = ${email} AND password = ${password} LIMIT 1`;
+    const query = `SELECT * FROM Users WHERE email = '${email}' AND password = '${password}' LIMIT 1`;
     const res = await db.query(query);
     if (res && res.rows && res.rows.length) {
         return res.rows[0];
@@ -20,6 +20,7 @@ module.exports = (db) => {
 
         if(user){
             req.session['user_id'] =  user.id;
+            res.sendStatus(200);
         } else {
             req.session['user_id'] = null;
             // User not authorized

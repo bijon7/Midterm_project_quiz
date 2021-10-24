@@ -1,17 +1,17 @@
 module.exports.getQuizzes = async (db, userId) => {
-    const query = `SELECT * FROM Quiz WHERE user_id = ${userId} OR is_private = 0`;
+    const query = `SELECT * FROM Quizzes WHERE user_id = ${userId} OR is_private = false`;
     const res = await db.query(query);
     var quizzes = res?.rows || [];
     return quizzes;
 }
 
 module.exports.getQuizById = async (db, quizId) => {
-    const query = `SELECT * FROM Quiz WHERE id = ${quizId}`;
+    const query = `SELECT * FROM Quizzes WHERE id = ${quizId}`;
     const res = await db.query(query);
     if(res && res.rows && res.rows.length){
         const quiz = res[0];
         quiz.quizQuestions = await _getQuizQuestions(db, quiz.id)
-        return quizl
+        return quiz;
     }
 
     return null;
