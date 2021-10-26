@@ -1,5 +1,5 @@
 CREATE TABLE QuizQuestions(
     id SERIAL PRIMARY KEY NOT NULL,
-    quiz_id INT REFERENCES Quizzes(id),
+    quiz_id INT REFERENCES Quizzes(id) ON DELETE CASCADE,
     question VARCHAR (500) NOT NULL
 );
