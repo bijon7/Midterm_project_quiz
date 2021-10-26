@@ -1,6 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
-const cookieSession = require('cookie-session');
+const cookieSession = require("cookie-session");
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -24,10 +24,12 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1']
-}));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"],
+  })
+);
 
 app.use(
   "/styles",
@@ -64,6 +66,10 @@ app.use("/api/quizResponses", quizResponses(db));
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/questions", (req, res) => {
+  res.render("quizQuestions");
 });
 
 app.listen(PORT, () => {
