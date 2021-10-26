@@ -24,6 +24,10 @@ html {
   box-sizing: border-box;
 }
 
+.text-align {
+  text-align: center;
+}
+
 .nav-styles {
   display: flex;
   justify-content: space-between;
@@ -35,6 +39,10 @@ html {
 
 .font-white {
   color: #ffffff;
+}
+
+.flex-nav a {
+  margin: 0px 10px;
 }
 .flex-nav {
   display: flex;
@@ -55,4 +63,10 @@ html {
 .quiz-button:hover {
   border: 5px solid #ff8649;
   box-shadow: 5px 5px 10px rgb(0 0 0 / 0.3);
+}
+
+// questions page style
+
+.margin-tb-10 {
+  margin: 10px 0px;
 }
