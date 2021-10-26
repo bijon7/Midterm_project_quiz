@@ -25,37 +25,21 @@
         <h5 class="navbar-brand" href="#">Welcome, <span>User Name</span></h5>
       </div>
       <span class="container flex-nav">
-        <h6 class="font-white" href="/createquiz">Create Quiz</h6>
-        <h6 class="font-white" href="/privatequiz">Private Quizzes</h6>
-        <h6 class="font-white" href="/scores">Scores</h6>
-        <h6 class="font-white" href="/logout">Logout</h6>
+        <a class="font-white" href="/createquiz">Create Quiz</a>
+        <a class="font-white" href="/privatequiz">Private Quizzes</a>
+        <a class="font-white" href="/scores">Scores</a>
+        <a class="font-white" href="/logout">Logout</a>
       </span>
     </nav>
 
     <div class="container see-border">
-      <div class="grid">
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-        <button class="btn btn-primary quiz-button" type="button">
-          Button
-        </button>
-      </div>
+      <form method="GET" action="/privatequiz">
+        <div class="grid">
+          <button class="btn btn-primary quiz-button" type="button">
+            Button
+          </button>
+        </div>
+      </form>
     </div>
     <!-- <h1>Have fun! 🥔</h1> -->
   </body>
