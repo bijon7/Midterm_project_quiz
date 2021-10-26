@@ -70,3 +70,28 @@ html {
 .margin-tb-10 {
   margin: 10px 0px;
 }
+
+// Private Quizzes Page
+
+.private-quiz-group {
+  display: inline-flex;
+  border: 5px solid #ff8649;
+  background-color: #ff8649;
+  border-radius: 5px;
+  margin: 10px 10px 10px 10px;
+
+  height: 80px;
+}
+
+.private-quiz-button {
+  border-radius: 0px;
+  min-width: 150px;
+
+  // min-height: 70px;
+}
+
+.make-public {
+  margin-left: 5px;
+  border-radius: 0px;
+  max-width: 75px;
+}
