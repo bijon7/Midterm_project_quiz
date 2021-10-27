@@ -33,14 +33,14 @@
     </nav>
 
     <div class="container see-border">
-      <form method="GET" action="/privatequiz">
+      <!-- Loop through db to access all quizzes in database -->
+      <form method="GET" action="/quizQuestions/:questionid">
         <div class="grid">
-          <button class="btn btn-primary quiz-button" type="button">
-            Button
+          <button class="btn btn-primary quiz-button" type="submit">
+            Quiz 1
           </button>
         </div>
       </form>
     </div>
-    <!-- <h1>Have fun! 🥔</h1> -->
   </body>
 </html>

@@ -71,6 +71,10 @@ html {
   margin: 10px 0px;
 }
 
+.margin-auto-center {
+  margin: 0px auto;
+}
+
 // Private Quizzes Page
 
 .private-quiz-group {
@@ -86,8 +90,6 @@ html {
 .private-quiz-button {
   border-radius: 0px;
   min-width: 150px;
-
-  // min-height: 70px;
 }
 
 .make-public {
@@ -95,3 +97,5 @@ html {
   border-radius: 0px;
   max-width: 75px;
 }
+
+// Create Quiz
