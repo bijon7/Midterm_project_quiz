@@ -14,5 +14,9 @@ module.exports = () => {
     res.render("privateQuizzes");
   });
 
+  router.get("/createquiz", (req, res) => {
+    res.render("createquiz");
+  });
+
   return router;
 };
