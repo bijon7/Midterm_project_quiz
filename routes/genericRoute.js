@@ -14,8 +14,8 @@ module.exports = (db, tableName) => {
   // Get all Entities
   router.get("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -35,8 +35,8 @@ module.exports = (db, tableName) => {
   // Get one Item by Id
   router.get("/:id", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -61,8 +61,8 @@ module.exports = (db, tableName) => {
   // Create a new entity
   router.post("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -87,8 +87,8 @@ module.exports = (db, tableName) => {
   // Edit an entity
   router.patch("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -110,8 +110,8 @@ module.exports = (db, tableName) => {
   // DELETE an entity
   router.delete("/:id", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;

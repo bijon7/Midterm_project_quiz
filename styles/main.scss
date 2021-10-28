@@ -33,8 +33,7 @@ html {
   justify-content: space-between;
   align-items: center;
   min-height: 75px;
-  margin-bottom: 100px;
-  padding: 0px 50px;
+  padding: 0px 24px;
 }
 
 .font-white {
@@ -98,4 +97,21 @@ html {
   max-width: 75px;
 }
 
+.questions-wrapper {
+  margin: 24px;
+  border-radius: 5px;
+  legend {
+    font-size: 1em;
+  }
+
+  form{
+    padding: 5px;
+    border: solid gray 1px;
+    border-radius: 5px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    a {flex: 1;}
+  }
+}
 // Create Quiz

@@ -60,7 +60,7 @@ app.use("/api/quizQuestions", quizQuestions(db));
 app.use("/api/quizQuestionOptions", quizQuestionOptions(db));
 app.use("/api/quizResponses", quizResponses(db));
 
-app.use("/", applicationRoutes());
+app.use("/", applicationRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Warning: avoid creating more routes in this file!

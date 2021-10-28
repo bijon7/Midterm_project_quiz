@@ -55,3 +55,12 @@ module.exports.queryTable = async(db, tableName, whereClause) => {
   const res = await db.query(query);
   return (res && res.rows) || [];
 };
+
+module.exports.getUser = async(db, email, password) => {
+  const query = `SELECT * FROM Users WHERE email = '${email}' AND password = '${password}' LIMIT 1`;
+  const res = await db.query(query);
+  if (res && res.rows && res.rows.length) {
+    return res.rows[0];
+  }
+  return null;
+};

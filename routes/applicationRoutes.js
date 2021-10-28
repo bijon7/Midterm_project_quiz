@@ -1,9 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const { getQuizzes } = require("../helpers/quizDatabaseHelper");
 
-module.exports = () => {
-  router.get("/", (req, res) => {
-    res.render("index");
+module.exports = (db) => {
+
+  router.get("/", async(req, res)  => {
+    let user = req.session['user'] || {};
+    if (!user.id) {
+      // User not logged in
+      res.render("index", {isLoggedIn: false, user, privateQuizzes: [], publicQuizzes: []});
+      return;
+    }
+
+    const quizzes = await getQuizzes(db,user.id);
+
+    const public = quizzes.filter(it=>!it.is_private);
+    const private = quizzes.filter(it=>it.is_private);
+    res.render("index", {isLoggedIn: true, user,privateQuizzes: private, publicQuizzes: public});
+    
   });
 
   router.get("/questions", (req, res) => {

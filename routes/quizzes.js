@@ -17,14 +17,14 @@ module.exports = (db) => {
   // Get all Quizzes
   router.get("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
     }
 
-    getQuizzes(db, userId)
+    getQuizzes(db, user.id)
       .then(data => {
         res.json(data);
       })
@@ -38,8 +38,8 @@ module.exports = (db) => {
   // Get one Quiz by Id
   router.get("/:id", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -64,8 +64,8 @@ module.exports = (db) => {
   // Create a new Quiz
   router.post("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -90,8 +90,8 @@ module.exports = (db) => {
   // Edit an entity
   router.patch("/", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -111,10 +111,10 @@ module.exports = (db) => {
   });
 
   // DELETE an entity
-  router.delete("/:id", (req, res) => {
+  router.get("/delete/:id", (req, res) => {
 
-    let userId = req.session['user_id'] || 0;
-    if (userId < 1) {
+    let user = req.session['user'] || {};
+    if (!user.id) {
       // User not logged in
       res.sendStatus(401);
       return;
@@ -123,8 +123,8 @@ module.exports = (db) => {
     let entityId = req.params['id'];
 
     deleteEntity(db, "Quizzes", entityId)
-      .then(data => {
-        res.json(data);
+      .then(() => {
+        res.redirect('/');
       })
       .catch(err => {
         res
