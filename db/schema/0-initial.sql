@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS QuizeResponses;
+DROP TABLE IF EXISTS QuizResponses;
 DROP TABLE IF EXISTS QuizQuestionOptions;
 DROP TABLE IF EXISTS QuizQuestions;
 DROP TABLE IF EXISTS Quizzes;

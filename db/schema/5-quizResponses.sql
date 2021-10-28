@@ -1,4 +1,4 @@
-CREATE TABLE QuizeResponses(
+CREATE TABLE QuizResponses(
     id SERIAL PRIMARY KEY NOT NULL,
     user_id INT REFERENCES Users(id) ON DELETE CASCADE,
     quiz_id INT REFERENCES Quizzes(id) ON DELETE CASCADE,
