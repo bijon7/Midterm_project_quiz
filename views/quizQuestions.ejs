@@ -23,29 +23,74 @@
         <h5 class="navbar-brand" href="#">Welcome, User</h5>
       </div>
       <div class="flex-nav">
-      <a class="nav-item nav-link"  style="color: white; font-size: 20px;">Score: 0</a>
-      <a class="nav-item nav-link" href="/register" style="color: white; font-size: 20px;" >Return Home </a>
+        <!-- <a class="nav-item nav-link" style="color: white; font-size: 20px"
+          >Score: 0</a
+        > -->
+        <a
+          class="nav-item nav-link"
+          href="/register"
+          style="color: white; font-size: 20px"
+          >Return Home
+        </a>
       </div>
-
-
     </nav>
-
 
     <!-- Questions Container -->
     <div class="container see-border">
       <!-- Form for each question -->
       <form class="form-group method" method="POST" action="/">
-        <div class="text-align" >
-        <h3 class="margin-tb-10">What year was the internet invented?</h3>
-        <div class="form-row">
-          <input  class="margin-tb-10" type="text" name="answer" placeholder="answer" />
+        <div class="text-align margin-tb-30">
+          <h3 class="margin-tb-10">What year was the internet invented?</h3>
 
-          <button class="btn btn-primary margin-tb-10" type="submit" style="margin: 0 1em">
+          <div class="form-row margin-tb-30">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 1
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 2
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 3
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 4
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-align margin-tb-10">
+          <h3 class="margin-tb-10">What year was the internet invented?</h3>
+
+          <div class="form-row margin-tb-30">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 1
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 2
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 3
+              </button>
+              <button type="button" class="btn btn-primary margin-lr-10">
+                Answer 4
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-align">
+          <button
+            class="btn btn-primary margin-tb-10"
+            type="submit"
+            style="margin: 0 1em"
+          >
             Submit
           </button>
         </div>
       </form>
-
     </div>
   </body>
 </html>
