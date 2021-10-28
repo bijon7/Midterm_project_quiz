@@ -17,14 +17,17 @@
 <body>
   <!-- As a link -->
 
-  <nav class="nav-styles navbar-dark bg-primary">
+  <nav class="nav-styles navbar-dark bg-primary font-white">
 
       <%if(isLoggedIn){%>
         <h5 class="navbar-brand" href="#">Welcome, <%= user.firstname %></span></h5>
-        <a class="font-white" href="/createquiz">Create Quiz</a>
+
+
         <a class="font-white" href="/privatequiz">Private Quizzes</a>
+        <a class="font-white" href="/createquiz">Create Quiz</a>
         <a class="font-white" href="/scores">Scores</a>
         <a class="font-white" href="/api/users/logout">Logout</a>
+
         <%} else {%>
           <form action="/api/users/login" method="post">
             <input type="text" name="email" placeholder="username">
@@ -57,7 +60,7 @@
   </fieldset>
 
 
-     
+
   <fieldset class="questions-wrapper">
     <legend>User Quizzes (Private)</legend>
     <%for(let quiz of privateQuizzes){%>
