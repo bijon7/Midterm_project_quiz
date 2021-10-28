@@ -20,53 +20,50 @@
   <body>
     <!-- As a link -->
 
-    <nav class="nav-styles navbar-dark bg-primary">
-      <div class="container">
-        <h5 class="navbar-brand" href="#">Welcome, <span>User Name</span></h5>
-      </div>
+    <nav class="nav-styles navbar-dark bg-primary font-white">
 
-      <span class="flex-nav">
-        <a
-          class="nav-item nav-link"
-          href="/"
-          style="color: white; font-size: 20px"
-          >Return Home
-        </a>
-      </span>
-    </nav>
+      <%if(isLoggedIn){%>
+        <h5 class="navbar-brand" href="#">Welcome, <%= user.firstname %></span></h5>
+        <a  href="/" >Home</a>
+        <a  href="/createquiz">Create Quiz</a>
+        <!-- <a class="font-white" href="/privatequiz">Private Quizzes</a> -->
+        <a class="font-white" href="/scores">Scores</a>
 
-    <div class="text-align">
-      <h1>Private Quizzes</h1>
-    </div>
-    <div class="container see-border">
-      <form method="GET" action="/privatequiz/:(id)">
-        <div class="grid">
-          <div class="private-quiz-group">
-            <button class="btn btn-primary private-quiz-button" type="button">
-              Private Quiz 1
-            </button>
-            <button class="btn btn-primary make-public" type="button">
-              Make Public
-            </button>
-          </div>
-          <div class="private-quiz-group">
-            <button class="btn btn-primary private-quiz-button" type="button">
-              Private Quiz 1
-            </button>
-            <button class="btn btn-primary make-public" type="button">
-              Make Public
-            </button>
-          </div>
-          <div class="private-quiz-group">
-            <button class="btn btn-primary private-quiz-button" type="button">
-              Private Quiz 1
-            </button>
-            <button class="btn btn-primary make-public" type="submit">
-              Make Public
-            </button>
-          </div>
-        </div>
+
+        <a  href="/api/users/logout">Logout</a>
+
+        <%} else {%>
+          <form action="/api/users/login" method="post">
+            <input type="text" name="email" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="login">
+          </form>
+        <%}%>
+
+  </nav>
+
+    <%if(isLoggedIn){%>
+
+    <fieldset class="questions-wrapper">
+      <legend>User Quizzes (Private)</legend>
+      <%for(let quiz of privateQuizzes){%>
+      <form>
+        <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
+        <%if(isLoggedIn){%>
+        <button class="btn btn-primary quiz-button" type="submit">Edit</button>
+        <button
+          formmethod="get"
+          formaction="<%='/api/quizzes/delete/' + quiz.id %>"
+          class="btn btn-primary quiz-button"
+          type="submit"
+        >
+          Delete
+        </button>
+        <%}%>
       </form>
-    </div>
+      <%}%>
+    </fieldset>
+
+    <%}%>
   </body>
 </html>
