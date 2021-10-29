@@ -18,79 +18,58 @@
   </head>
   <body>
     <!-- NavBar -->
-    <nav class="nav-styles navbar-dark bg-primary">
-      <div class="container">
-        <h5 class="navbar-brand" href="#">Welcome, User</h5>
-      </div>
-      <div class="flex-nav">
-        <!-- <a class="nav-item nav-link" style="color: white; font-size: 20px"
-          >Score: 0</a
-        > -->
-        <a
-          class="nav-item nav-link"
-          href="/register"
-          style="color: white; font-size: 20px"
-          >Return Home
-        </a>
-      </div>
-    </nav>
+    <nav class="nav-styles navbar-dark bg-primary font-white">
 
-    <!-- Questions Container -->
-    <div class="container see-border">
-      <!-- Form for each question -->
-      <form class="form-group method" method="POST" action="/">
-        <div class="text-align margin-tb-30">
-          <h3 class="margin-tb-10">What year was the internet invented?</h3>
+        <!-- TODO: check if loggined in -->
+        <h5 class="navbar-brand" href="#">Welcome, user.firstname</span></h5>
+        <a  href="/" >Home</a>
+        <a  href="/createquiz">Create Quiz</a>
+        <a class="font-white" href="/privatequiz">Private Quizzes</a>
+        <!-- <a class="font-white" href="/scores">Scores</a> -->
 
-          <div class="form-row margin-tb-30">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 1
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 2
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 3
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 4
-              </button>
-            </div>
-          </div>
-        </div>
 
-        <div class="text-align margin-tb-10">
-          <h3 class="margin-tb-10">What year was the internet invented?</h3>
+        <a  href="/api/users/logout">Logout</a>
 
-          <div class="form-row margin-tb-30">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 1
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 2
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 3
-              </button>
-              <button type="button" class="btn btn-primary margin-lr-10">
-                Answer 4
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- TODO: Start alligator else statement -->
+        <!-- Uncomment input form once connected to db -->
 
-        <div class="text-align">
-          <button
-            class="btn btn-primary margin-tb-10"
-            type="submit"
-            style="margin: 0 1em"
-          >
-            Submit
+          <!-- <form action="/api/users/login" method="post">
+            <input type="text" name="email" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="login">
+          </form> -->
+
+        <!-- TODO: End of else statement -->
+
+  </nav>
+
+    <fieldset class="questions-wrapper">
+      <legend style="margin-left: 70px">Quiz Questions</legend>
+
+      <form>
+        <a href="" class="margin-l-20">What is the Capital of Canada?</a>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary quiz-button">
+            Montreal
+          </button>
+          <button type="button" class="btn btn-primary quiz-button">
+            Winnipeg
+          </button>
+          <button type="button" class="btn btn-primary quiz-button">
+            Ottawa
           </button>
         </div>
+        <!-- <button class="btn btn-primary quiz-button" type="submit">
+          Ottawa
+        </button>
+        <button class="btn btn-primary quiz-button" type="submit">
+          Vancouver
+        </button>
+        <button class="btn btn-primary quiz-button" type="submit">
+          Montreal
+        </button> -->
       </form>
-    </div>
+    </fieldset>
   </body>
 </html>
