@@ -44,7 +44,13 @@
 
     <%for(let quiz of publicQuizzes){%>
       <form>
-        <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
+        <!-- Uncomment <a href="api/quizzes"> once connected to backend -->
+        <!-- <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a> -->
+
+        <!--  Remove <a href="/questions"> once connected to backend-->
+        <a href="/questions"><%=quiz.title%></a>
+
+
         <%if(quiz.user_id == user.id){%>
           <button class="btn btn-primary quiz-button" type="submit">
             Edit
