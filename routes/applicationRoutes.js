@@ -1,7 +1,6 @@
 const express = require("express");
-const { getUserScores } = require("../helpers/databaseHelper");
+const { getUserScores, getQuizzes } = require("../helpers/databaseHelper");
 const router = express.Router();
-const { getQuizzes } = require("../helpers/quizDatabaseHelper");
 
 module.exports = (db) => {
   router.get("/", async(req, res) => {

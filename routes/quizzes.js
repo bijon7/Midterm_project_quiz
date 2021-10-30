@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-  getQuizzes,
-  getQuizById
-} = require('../helpers/quizDatabaseHelper');
 
 const {
   addEntity,
   editEntity,
-  deleteEntity
+  deleteEntity,
+  getQuizzes,
+  getQuizById
 } = require('../helpers/databaseHelper');
 
 
