@@ -21,7 +21,7 @@ module.exports.getEntities = async(db, tableName) => {
 };
 
 module.exports.getEntityById = async(db, tableName, entityId) => {
-  if (typeof(entityId) === 'number' && entityId > 0) {
+  if (entityId && entityId > 0) {
     const query = `SELECT * FROM ${tableName} WHERE id=${entityId} LIMIT 1`;
     const res = await db.query(query);
     if (res && res.rows && res.rows.length) {
@@ -50,7 +50,7 @@ module.exports.editEntity = async(db, tableName, entity) => {
 };
 
 module.exports.deleteEntity = async(db, tableName, entityId) => {
-  if (typeof(entityId) === 'number' && entityId > 0) {
+  if (entityId && entityId > 0) {
     const query = `DELETE FROM ${tableName} WHERE id=${entityId}`;
     await db.query(query);
     return true;
@@ -74,12 +74,12 @@ module.exports.getUser = async(db, email, password) => {
 
 
 module.exports.getUserScores = async(db, userId)=>{
-  if (typeof(userId) !== 'number' && userId < 1) {
+  if (!userId || userId < 1) {
     return [];
   }
     
   const query = `
-    SELECT qr.quiz_id, q.title, COUNT(*)*100/5 AS Score 
+    SELECT qr.quiz_id, q.title, COUNT(*)*100/5 AS score 
     FROM QuizResponses AS qr 
     JOIN QuizQuestionOptions AS qqo ON qr.user_answer_id = qqo.id 
     JOIN Quizzes AS q ON q.id = qr.quiz_id
@@ -93,7 +93,7 @@ module.exports.getUserScores = async(db, userId)=>{
 
 
 module.exports.getQuizzes = async(db, userId) => {
-  if (typeof(userId) !== 'number' && userId < 1) {
+  if (!userId || userId < 1) {
     return [];
   }
 
@@ -104,11 +104,11 @@ module.exports.getQuizzes = async(db, userId) => {
 };
 
 module.exports.getQuizById = async(db, quizId) => {
-  if (typeof(quizId) === 'number' && quizId > 1) {
+  if (quizId && quizId > 0) {
     const query = `SELECT * FROM Quizzes WHERE id = ${quizId}`;
     const res = await db.query(query);
     if (res && res.rows && res.rows.length) {
-      const quiz = res[0];
+      const quiz = res.rows[0];
       quiz.quizQuestions = await _getQuizQuestions(db, quiz.id);
       return quiz;
     }

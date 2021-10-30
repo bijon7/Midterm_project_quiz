@@ -7,6 +7,15 @@
 
     <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz',path:'/createquiz'}]}) %>
 
+    <%for(let score of scores) {%>
+        <div>
+            <%=score.title%>
+            ----------------
+            %<%=score.score%>
+        </div>
+               
+    <%}%>   
+
 </body>
 
 </html>

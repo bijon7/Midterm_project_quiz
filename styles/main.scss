@@ -117,14 +117,14 @@ html {
   max-width: 75px;
 }
 
-.questions-wrapper {
+.quiz-list {
   margin: 24px;
   border-radius: 5px;
   legend {
     font-size: 1em;
   }
 
-  form {
+  .quiz-list-form {
     padding: 5px;
     border: solid gray 1px;
     border-radius: 5px;
@@ -133,6 +133,39 @@ html {
     align-items: center;
     a {
       flex: 1;
+    }
+  }
+}
+
+.quiz-page{
+  .quiz-questions-wrapper{
+    padding: 16px;
+    margin: 16px;
+    border: solid gray 1px;
+    border-radius: 5px;
+
+    .quiz-question{
+      .question-title{
+        font-size:20px ;
+        padding: 5px 0;
+        font-weight: bold;
+      }
+      .question-option-wrapper{
+        display: flex;
+        label {
+          flex: 1;
+          .question-option-title{
+            font-size:18px ;
+          }
+          .question-option-radio{
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+    .quiz-page-footer{
+      text-align: right;
     }
   }
 }

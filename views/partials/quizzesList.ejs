@@ -1,15 +1,9 @@
-<fieldset class="questions-wrapper">
+<fieldset class="quiz-list">
     <legend><%=title%></legend>
     
     <%for(let quiz of quizzes){%>
-      <form>
-        <!-- Uncomment <a href="api/quizzes"> once connected to backend -->
-        <!-- <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a> -->
-
-        <!--  Remove <a href="/questions"> once connected to backend-->
-        <a href="/questions"><%=quiz.title%></a>
-
-
+      <form class="quiz-list-form">
+        <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
         <%if(quiz.user_id == user.id){%>
           <button class="btn btn-primary quiz-button" type="submit">
             Edit

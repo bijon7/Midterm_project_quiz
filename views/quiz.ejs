@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head',{title:'Quiz Questions'}) %>
+
+  <body class="quiz-page">
+
+    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Create Quiz',
+      path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
+
+      <fieldset class="quiz-questions-wrapper">
+        <legend>
+          <%=quiz.title%>
+        </legend>
+        <form action="<%='/api/quizResponses/' + quiz.id%>" method="post">
+          <%for(let quizQuestion of quiz.quizQuestions) {%>
+            <div class="quiz-question">
+              <label class="question-title">
+                <%=quizQuestion.question%>
+              </label>
+              <div class="question-option-wrapper">
+                <%for(let option of quizQuestion.quizQuestionOptions) {%>
+                  <Label>
+                    <input class="question-option-radio" type="radio" name="<%=quizQuestion.id%>"
+                      value="<%=option.id%>" />
+                    <span class="question-option-title">
+                      <%=option.option%>
+                    </span>
+                  </Label>
+                  <%}%>
+              </div>
+              <hr />
+            </div>
+            <%}%>
+
+              <div class="quiz-page-footer">
+                <input type="submit" class="btn btn-primary quiz-button">
+              </div>
+        </form>
+      </fieldset>
+  </body>
+
+</html>

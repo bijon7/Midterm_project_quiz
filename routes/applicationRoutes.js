@@ -44,19 +44,6 @@ module.exports = (db) => {
     res.render("userScores", { isLoggedIn: true, user, scores: scores });
 
   });
-  router.get("/questions", (req, res) => {
-    let user = req.session["user"] || {};
-    if (!user.id) {
-      // User not logged in
-      res.render("index", {
-        isLoggedIn: false,
-        user,
-      });
-      return;
-    }
-
-    res.render("quizQuestions", { isLoggedIn: true, user });
-  });
 
   router.get("/privatequiz", async(req, res) => {
     let user = req.session["user"] || {};

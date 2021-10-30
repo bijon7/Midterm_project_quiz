@@ -43,11 +43,11 @@ module.exports = (db) => {
       return;
     }
 
-    const entityId = req.params['id'];
+    const entityId = parseInt(req.params['id'] || 0);
     getQuizById(db, entityId)
       .then(data => {
         if (data) {
-          res.json(data);
+          res.render('quiz', {user, isLoggedIn: true, quiz:data});
         } else {
           res.sendStatus(204);
         }
