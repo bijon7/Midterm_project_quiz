@@ -64,3 +64,17 @@ module.exports.getUser = async(db, email, password) => {
   }
   return null;
 };
+
+module.exports.getUserScores = async(db, userId)=>{
+  const query = `
+  SELECT qr.quiz_id, q.title, COUNT(*)*100/5 AS Score 
+  FROM QuizResponses AS qr 
+  JOIN QuizQuestionOptions AS qqo ON qr.user_answer_id = qqo.id 
+  JOIN Quizzes AS q ON q.id = qr.quiz_id
+  WHERE qqo.is_correct_option = true AND qr.user_id = ${userId}
+  GROUP BY qr.user_id, qr.quiz_id, q.title  
+  ORDER BY Score DESC, q.title ASC`;
+
+  const res = await db.query(query);
+  return (res && res.rows) || [];
+};

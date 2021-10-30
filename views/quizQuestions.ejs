@@ -17,28 +17,8 @@
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
   <body>
-    <!-- NavBar -->
-    <nav class="nav-styles navbar-dark bg-primary font-white">
-
-      <%if(isLoggedIn){%>
-        <h5 class="navbar-brand" href="#">Welcome, <%= user.firstname %></span></h5>
-        <a  href="/" >Home</a>
-        <a  href="/createquiz">Create Quiz</a>
-        <!-- <a class="font-white" href="/privatequiz">Private Quizzes</a> -->
-        <a class="font-white" href="/scores">Scores</a>
-
-
-        <a  href="/api/users/logout">Logout</a>
-
-        <%} else {%>
-          <form action="/api/users/login" method="post">
-            <input type="text" name="email" placeholder="username">
-            <input type="password" name="password" placeholder="password">
-            <input type="submit" value="login">
-          </form>
-        <%}%>
-
-    </nav>
+    
+    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
 
     <fieldset class="questions-wrapper">
       <legend style="margin-left: 70px">Quiz Questions</legend>

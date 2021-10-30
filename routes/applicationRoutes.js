@@ -1,9 +1,10 @@
 const express = require("express");
+const { getUserScores } = require("../helpers/databaseHelper");
 const router = express.Router();
 const { getQuizzes } = require("../helpers/quizDatabaseHelper");
 
 module.exports = (db) => {
-  router.get("/", async (req, res) => {
+  router.get("/", async(req, res) => {
     let user = req.session["user"] || {};
     if (!user.id) {
       // User not logged in
@@ -28,6 +29,22 @@ module.exports = (db) => {
     });
   });
 
+  router.get("/userScores", async(req, res)=>{
+    let user = req.session["user"] || {};
+    if (!user.id) {
+      // User not logged in
+      res.render("index", {
+        isLoggedIn: false,
+        user,
+      });
+      return;
+    }
+
+    const scores = await getUserScores(db, user.id);
+
+    res.render("userScores", { isLoggedIn: true, user, scores: scores });
+
+  });
   router.get("/questions", (req, res) => {
     let user = req.session["user"] || {};
     if (!user.id) {
@@ -42,7 +59,7 @@ module.exports = (db) => {
     res.render("quizQuestions", { isLoggedIn: true, user });
   });
 
-  router.get("/privatequiz", async (req, res) => {
+  router.get("/privatequiz", async(req, res) => {
     let user = req.session["user"] || {};
     if (!user.id) {
       // User not logged in

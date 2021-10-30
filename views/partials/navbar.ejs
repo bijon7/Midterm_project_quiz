@@ -1,0 +1,18 @@
+<nav class="nav-styles navbar-dark bg-primary font-white">
+    <%if(isLoggedIn){%>
+        <h6 class="navbar-brand" href="#">Welcome, <%= user.firstname %></h6>
+
+        <% for(let link of links){ %>
+            <a class="font-white" href="<%=link.path%>"><%=link.title%></a>
+        <% } %>
+
+        <a class="font-white" href="/api/users/logout">Logout</a>
+
+    <%} else {%>
+        <form action="/api/users/login" method="post">
+            <input type="text" name="email" placeholder="username">
+            <input type="password" name="password" placeholder="password">
+            <input type="submit" value="login">
+        </form>
+    <%}%>
+</nav>

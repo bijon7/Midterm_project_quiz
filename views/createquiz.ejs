@@ -19,21 +19,7 @@
 
   <body>
     <!-- As a link -->
-
-    <nav class="nav-styles navbar-dark bg-primary">
-      <div class="container">
-        <h5 class="navbar-brand" href="#">Welcome, <span>User Name</span></h5>
-      </div>
-
-      <span class="flex-nav">
-        <a
-          class="nav-item nav-link"
-          href="/"
-          style="color: white; font-size: 20px"
-          >Return Home
-        </a>
-      </span>
-    </nav>
+    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes', path:'/privatequiz'},{title:'Scores', path:'/userScores'}]}) %>
 
     <div class="text-align">
       <h1>Create Quiz</h1>
