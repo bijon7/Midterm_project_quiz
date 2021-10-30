@@ -21,10 +21,12 @@ module.exports.getEntities = async(db, tableName) => {
 };
 
 module.exports.getEntityById = async(db, tableName, entityId) => {
-  const query = `SELECT * FROM ${tableName} WHERE id=${entityId || 0} LIMIT 1`;
-  const res = await db.query(query);
-  if (res && res.rows && res.rows.length) {
-    return res.rows[0];
+  if (typeof(entityId) === 'number' && entityId > 0) {
+    const query = `SELECT * FROM ${tableName} WHERE id=${entityId} LIMIT 1`;
+    const res = await db.query(query);
+    if (res && res.rows && res.rows.length) {
+      return res.rows[0];
+    }
   }
   return null;
 };
@@ -48,39 +50,42 @@ module.exports.editEntity = async(db, tableName, entity) => {
 };
 
 module.exports.deleteEntity = async(db, tableName, entityId) => {
-  const query = `DELETE FROM ${tableName} WHERE id=${entityId || 0}`;
-  await db.query(query);
-  return true;
-};
-
-module.exports.queryTable = async(db, tableName, whereClause) => {
-  const query = `SELECT * FROM ${tableName} WHERE ${whereClause}`;
-  const res = await db.query(query);
-  return (res && res.rows) || [];
+  if (typeof(entityId) === 'number' && entityId > 0) {
+    const query = `DELETE FROM ${tableName} WHERE id=${entityId}`;
+    await db.query(query);
+    return true;
+  }
+  return false;
 };
 
 
 // Applicatin Helper Methods
 
 module.exports.getUser = async(db, email, password) => {
-  const query = `SELECT * FROM Users WHERE email = '${email}' AND password = '${password}' LIMIT 1`;
-  const res = await db.query(query);
-  if (res && res.rows && res.rows.length) {
-    return res.rows[0];
+  if (email && password) {
+    const query = `SELECT * FROM Users WHERE email = '${email}' AND password = '${password}' LIMIT 1`;
+    const res = await db.query(query);
+    if (res && res.rows && res.rows.length) {
+      return res.rows[0];
+    }
   }
   return null;
 };
 
 
 module.exports.getUserScores = async(db, userId)=>{
+  if (typeof(userId) !== 'number' && userId < 1) {
+    return [];
+  }
+    
   const query = `
-  SELECT qr.quiz_id, q.title, COUNT(*)*100/5 AS Score 
-  FROM QuizResponses AS qr 
-  JOIN QuizQuestionOptions AS qqo ON qr.user_answer_id = qqo.id 
-  JOIN Quizzes AS q ON q.id = qr.quiz_id
-  WHERE qqo.is_correct_option = true AND qr.user_id = ${userId}
-  GROUP BY qr.user_id, qr.quiz_id, q.title  
-  ORDER BY Score DESC, q.title ASC`;
+    SELECT qr.quiz_id, q.title, COUNT(*)*100/5 AS Score 
+    FROM QuizResponses AS qr 
+    JOIN QuizQuestionOptions AS qqo ON qr.user_answer_id = qqo.id 
+    JOIN Quizzes AS q ON q.id = qr.quiz_id
+    WHERE qqo.is_correct_option = true AND qr.user_id = ${userId}
+    GROUP BY qr.user_id, qr.quiz_id, q.title  
+    ORDER BY Score DESC, q.title ASC`;
 
   const res = await db.query(query);
   return (res && res.rows) || [];
@@ -88,6 +93,10 @@ module.exports.getUserScores = async(db, userId)=>{
 
 
 module.exports.getQuizzes = async(db, userId) => {
+  if (typeof(userId) !== 'number' && userId < 1) {
+    return [];
+  }
+
   const query = `SELECT * FROM Quizzes WHERE user_id = ${userId} OR is_private = false`;
   const res = await db.query(query);
   let quizzes = (res && res.rows) || [];
@@ -95,12 +104,14 @@ module.exports.getQuizzes = async(db, userId) => {
 };
 
 module.exports.getQuizById = async(db, quizId) => {
-  const query = `SELECT * FROM Quizzes WHERE id = ${quizId}`;
-  const res = await db.query(query);
-  if (res && res.rows && res.rows.length) {
-    const quiz = res[0];
-    quiz.quizQuestions = await _getQuizQuestions(db, quiz.id);
-    return quiz;
+  if (typeof(quizId) === 'number' && quizId > 1) {
+    const query = `SELECT * FROM Quizzes WHERE id = ${quizId}`;
+    const res = await db.query(query);
+    if (res && res.rows && res.rows.length) {
+      const quiz = res[0];
+      quiz.quizQuestions = await _getQuizQuestions(db, quiz.id);
+      return quiz;
+    }
   }
 
   return null;
