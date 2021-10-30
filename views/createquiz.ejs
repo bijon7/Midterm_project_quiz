@@ -2,108 +2,48 @@
 <html lang="en">
   <%- include('partials/head',{title:'Home Page'})  %>
   <body>
-    <!-- As a link -->
+
     <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes', path:'/privatequiz'},{title:'Scores', path:'/userScores'}]}) %>
 
-    <div class="text-align">
-      <h1>Create Quiz</h1>
-    </div>
-    <div class="container text-align see-border">
+
+
+
+    <fieldset class="questions-wrapper ">
+      <legend style="margin-left: 70px">Create Your Quiz</legend>
+
+      <form>
+        <a href="" class="margin-l-20">Question #1:</a>
+
+    <div class="container text-align " style="max-width: 1200px">
       <form method="POST" action="/privatequiz/">
         <!-- Create Quiz Question and Answer input  -->
-        <!-- The rest of the Inputs (Question 2,3,etc are just for visuals. Do not keep) -->
-        <div class="input-group margin-tb-10">
-          <div>
-            <span class="input-group-text">Question #1</span>
-          </div>
-          <input
-            placeholder="Type question here"
-            type="text"
-            class="form-control"
-          />
-          <div>
-            <span class="input-group-text">Answer #1</span>
-          </div>
-          <input
-            placeholder="Type answer here"
-            type="text"
-            class="form-control"
-          />
-        </div>
-        <div class="input-group margin-tb-10">
-          <div>
-            <span class="input-group-text">Question #2</span>
-          </div>
-          <input
-            placeholder="Type question here"
-            type="text"
-            class="form-control"
-          />
-          <div>
-            <span class="input-group-text">Answer #2</span>
-          </div>
-          <input
-            placeholder="Type answer here"
-            type="text"
-            class="form-control"
-          />
-        </div>
-        <div class="input-group margin-tb-10">
-          <div>
-            <span class="input-group-text">Question #3</span>
-          </div>
-          <input
-            placeholder="Type question here"
-            type="text"
-            class="form-control"
-          />
-          <div>
-            <span class="input-group-text">Answer #3</span>
-          </div>
-          <input
-            placeholder="Type answer here"
-            type="text"
-            class="form-control"
-          />
-        </div>
-        <div class="input-group margin-tb-10">
-          <div>
-            <span class="input-group-text">Question #4</span>
-          </div>
-          <input
-            placeholder="Type question here"
-            type="text"
-            class="form-control"
-          />
-          <div>
-            <span class="input-group-text">Answer #4</span>
-          </div>
-          <input
-            placeholder="Type answer here"
-            type="text"
-            class="form-control"
-          />
-        </div>
-        <div class="input-group margin-tb-10">
-          <div>
-            <span class="input-group-text">Question #5</span>
-          </div>
-          <input
-            placeholder="Type question here"
-            type="text"
-            class="form-control"
-          />
-          <div>
-            <span class="input-group-text">Answer #5</span>
-          </div>
-          <input
-            placeholder="Type answer here"
-            type="text"
-            class="form-control"
-          />
-        </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="input-group margin-tb-10  " >
+          <div >
+            <span class="input-group-text margin-lr-10  span-style" style="padding: 10px 30px">Question #1</span>
+          </div>
+
+          <input
+            placeholder="Type question here"
+            type="text"
+            class="form-control"
+          />
+          <div>
+            <span class="input-group-text margin-lr-10 span-style" style="padding: 10px 30px">Answer #1</span>
+          </div>
+            <input
+              placeholder="Type answer here"
+              type="text"
+              class="form-control"
+            />
+         </div>
+
+
+
+
+        <div class="margin-center" style="width: 500px;">
+          <button type="submit" class="btn btn-primary text-align">Submit</button>
+        </div>
       </form>
     </div>
   </body>
