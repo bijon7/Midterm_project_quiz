@@ -64,7 +64,15 @@ html {
   box-shadow: 5px 5px 10px rgb(0 0 0 / 0.3);
 }
 
-// questions page style
+.span-style {
+  min-width: 150px;
+  min-height: 35px;
+  margin: 10px 20px 10px 20px;
+  border: 2px solid #ff8649;
+  border-radius: 10px;
+  background-color: #0074f6;
+  color: #ffffff;
+}
 
 .margin-tb-10 {
   margin: 10px 0px;
