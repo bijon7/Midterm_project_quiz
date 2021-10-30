@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <%- include('partials/head',{title:'Scores'})  %>
+<%- include('partials/head',{title:'Scores'}) %>
 
-<body>
+    <body class="score-page">
 
-    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz',path:'/createquiz'}]}) %>
+        <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes',
+            path:'/privatequiz'},{title:'Create Quiz',path:'/createquiz'}]}) %>
+            <div class="score-table">
+                <div class="table-row table-head">
+                    <label class="table-cell">
+                       Time
+                    </label>
+                    <label class="table-cell">
+                    Quiz
 
-    <%for(let score of scores) {%>
-        <div>
-            <%=score.title%>
-            ----------------
-            %<%=score.score%>
-        </div>
-               
-    <%}%>   
+                        </label>
+                        <label class="table-cell">
+                       Score
+                            </label>
+                </div>
 
-</body>
+                <%for(let score of scores) {%>
+                    <div class="table-row">
+                        <span class="table-cell">
+                            <%=(new Date(score.transaction_time)).toLocaleString()%>
+                        </span>
+                        <span class="table-cell">
+                        <%=score.title%>
+
+                            </span>
+                            <span class="table-cell">
+                            %<%=score.score%>
+                                </span>
+                    </div>
+
+                    <%}%>
+            </div>
+
+    </body>
 
 </html>

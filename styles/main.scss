@@ -169,4 +169,26 @@ html {
     }
   }
 }
+
+.score-page{
+  .score-table{
+    margin: 16px auto;
+    display: table;
+    
+    .table-row{
+      display: table-row;
+      .table-cell{
+        border: solid 1px gray;
+        display: table-cell;
+        padding: 5px 16px;
+      }
+    }
+
+    .table-head{
+      padding: 20px;
+      color: navy;
+      font-weight: bold;
+    }
+  }
+}
 // Create Quiz
