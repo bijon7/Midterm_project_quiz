@@ -4,8 +4,7 @@
 
   <body class="quiz-page">
 
-    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Create Quiz',
-      path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
+    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'}, {title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
 
       <fieldset class="quiz-questions-wrapper">
         <legend>

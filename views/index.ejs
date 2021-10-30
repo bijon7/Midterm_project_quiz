@@ -5,7 +5,7 @@
 
 <body>
 
-  <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
+  <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/', currentPath:true}, {title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
 
   <%if(isLoggedIn){%>
     <%- include('partials/quizzesList',{quizzes:publicQuizzes, user:user, title:'Public Quizzes'})  %>

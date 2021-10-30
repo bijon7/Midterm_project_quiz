@@ -36,6 +36,18 @@ html {
   padding: 0px 24px;
   position: sticky;
   top:0;
+  .nav-welcome{
+    font-weight: 400;
+  }
+  .nav-name{
+    font-weight: bold;
+  }
+
+  .current-path{
+    box-shadow: 0 0 5px 2px white ;
+    padding: 10px;
+    border-radius: 4px;
+  }
 }
 
 .font-white a {

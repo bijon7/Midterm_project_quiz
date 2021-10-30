@@ -5,8 +5,8 @@
 
     <body class="score-page">
 
-        <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes',
-            path:'/privatequiz'},{title:'Create Quiz',path:'/createquiz'}]}) %>
+        <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'}, {title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores', currentPath:true}]}) %>
+
             <div class="score-table">
                 <div class="table-row table-head">
                     <label class="table-cell">

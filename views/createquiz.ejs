@@ -3,7 +3,7 @@
   <%- include('partials/head',{title:'Home Page'})  %>
   <body>
 
-    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'},{title:'Private Quizzes', path:'/privatequiz'},{title:'Scores', path:'/userScores'}]}) %>
+    <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Home', path:'/'}, {title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz', currentPath:true},{title:'Scores', path:'/userScores'}]}) %>
 
 
 
