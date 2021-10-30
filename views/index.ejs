@@ -8,54 +8,10 @@
   <%- include('partials/navbar', {isLoggedIn, user, links:[{title:'Private Quizzes', path:'/privatequiz'},{title:'Create Quiz', path:'/createquiz'},{title:'Scores', path:'/userScores'}]}) %>
 
   <%if(isLoggedIn){%>
-  <fieldset class="questions-wrapper">
-    <legend>Public Quizzes</legend>
-
-
-    <%for(let quiz of publicQuizzes){%>
-      <form>
-        <!-- Uncomment <a href="api/quizzes"> once connected to backend -->
-        <!-- <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a> -->
-
-        <!--  Remove <a href="/questions"> once connected to backend-->
-        <a href="/questions"><%=quiz.title%></a>
-
-
-        <%if(quiz.user_id == user.id){%>
-          <button class="btn btn-primary quiz-button" type="submit">
-            Edit
-          </button>
-          <button formmethod="get" formaction="<%='/api/quizzes/delete/' + quiz.id %>" class="btn btn-primary quiz-button"
-            type="submit">
-            Delete
-          </button>
-          <%}%>
-      </form>
-      <%}%>
-
-  </fieldset>
-
-
-
-  <fieldset class="questions-wrapper">
-    <legend>User Quizzes (Private)</legend>
-    <%for(let quiz of privateQuizzes){%>
-      <form>
-        <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
-        <%if(isLoggedIn){%>
-          <button class="btn btn-primary quiz-button" type="submit">
-            Edit
-          </button>
-          <button formmethod="get" formaction="<%='/api/quizzes/delete/' + quiz.id %>" class="btn btn-primary quiz-button"
-            type="submit">
-            Delete
-          </button>
-          <%}%>
-      </form>
-      <%}%>
-  </fieldset>
-
+    <%- include('partials/quizzesList',{quizzes:publicQuizzes, user:user, title:'Public Quizzes'})  %>
+    <%- include('partials/quizzesList',{quizzes:privateQuizzes, user:user, title:'User Quizzes (Private Quizzes)'})  %>
   <%}%>
+
 </body>
 
 </html>
