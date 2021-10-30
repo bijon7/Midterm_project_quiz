@@ -34,6 +34,8 @@ html {
   align-items: center;
   min-height: 75px;
   padding: 0px 24px;
+  position: sticky;
+  top:0;
 }
 
 .font-white a {
@@ -152,6 +154,9 @@ html {
       }
       .question-option-wrapper{
         display: flex;
+        .crct::after{
+          content: '';
+        }
         label {
           flex: 1;
           .question-option-title{

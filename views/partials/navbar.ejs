@@ -1,6 +1,6 @@
 <nav class="nav-styles navbar-dark bg-primary font-white">
     <%if(isLoggedIn){%>
-        <h6 class="navbar-brand" href="#">Welcome, <%= user.firstname %></h6>
+        <h6 class="navbar-brand" href="#">Welcome <%= user.firstname %></h6>
 
         <% for(let link of links){ %>
             <a class="font-white" href="<%=link.path%>"><%=link.title%></a>

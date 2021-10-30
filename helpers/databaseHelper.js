@@ -85,7 +85,7 @@ module.exports.getUserScores = async(db, userId)=>{
     JOIN Quizzes AS q ON q.id = qr.quiz_id
     WHERE qqo.is_correct_option = true AND qr.user_id = ${userId}
     GROUP BY qr.user_id, qr.quiz_id, q.title, qr.transaction_time
-    ORDER BY Score DESC, q.title ASC`;
+    ORDER BY Score DESC, qr.transaction_time DESC, q.title ASC`;
 
   const res = await db.query(query);
   return (res && res.rows) || [];

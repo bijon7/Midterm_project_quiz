@@ -19,7 +19,7 @@
               </label>
               <div class="question-option-wrapper">
                 <%for(let option of quizQuestion.quizQuestionOptions) {%>
-                  <Label>
+                  <Label class="<%=option.is_correct_option ? 'crct':''%>">
                     <input required class="question-option-radio" type="radio" name="<%=quizQuestion.id%>"
                       value="<%=option.id%>" />
                     <span class="question-option-title">
