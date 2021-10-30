@@ -1,4 +1,3 @@
-const { response } = require('express');
 const express = require('express');
 const { addEntity } = require('../helpers/databaseHelper');
 const router = express.Router();
@@ -29,7 +28,7 @@ module.exports = (db)=> {
 
     await Promise.all(promisses);
 
-    res.redirect('/');
+    res.redirect('/userScores');
 
   });
 
