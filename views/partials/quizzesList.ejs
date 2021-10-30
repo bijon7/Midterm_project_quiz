@@ -3,7 +3,17 @@
     
     <%for(let quiz of quizzes){%>
       <form class="quiz-list-form">
-        <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
+        <div class="list-link">
+          <div>
+            <a href="<%='/api/quizzes/' + quiz.id %>"><%=quiz.title%></a>
+          </div>
+          <div>
+            <span class="link-button" disabled>Share with your friends:</span>
+
+            <span ><%='http://loclhost:8080' + '/api/quizzes/' + quiz.id %></span>
+          </div>
+          
+        </div>
         <%if(quiz.user_id == user.id){%>
           <!-- hide edit button as it is not functional for demo -->
           
@@ -14,8 +24,13 @@
             type="submit">
             Delete
           </button>
+
+          
+
           <%}%>
       </form>
       <%}%>
+
+      
 
   </fieldset>

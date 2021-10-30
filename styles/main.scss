@@ -145,9 +145,17 @@ html {
     margin: 5px 0;
     display: flex;
     align-items: center;
-    a {
+    .list-link {
       flex: 1;
+      .link-button{
+        background-color: lightgray;
+        border:none;
+        border-radius: 3px;
+        padding:3px;
+        margin: 2px;
+      }
     }
+
   }
 }
 
